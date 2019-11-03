@@ -5,11 +5,13 @@ class User
   public $username;
   public $first_name;
   public $last_name;
+
   //Method for selecting all users
   public static function find_all_users()
   {
     return self::find_this_query("SELECT * FROM users");
   }
+
   //Method for selecting user by spectific id
   public static function find_user_by_id($user_id)
   {
@@ -18,6 +20,7 @@ class User
 
     return !empty($the_result_array) ? array_shift($the_result_array) : false;
   }
+
   //Method for creating some query
   public static function find_this_query($sql)
   {
@@ -31,14 +34,28 @@ class User
 
     return $the_object_array;
   }
+
+  //Method for verifying user
+  public static function verify_user($username, $password)
+  {
+    global $database;
+
+    $username = $database->escape_string($username);
+    $password = $database->escape_string($password);
+    $sql = "SELECT * FROM users WHERE ";
+    $sql .= "username = '{$username}' ";
+    $sql .= "AND password = '{$password}' ";
+    $sql .= "LIMIT 1";
+
+    $the_result_array = self::find_this_query($sql);
+
+    return !empty($the_result_array) ? array_shift($the_result_array) : false;
+  }
+
   //method for instantiate user
   public static function instantiation($the_record)
   {
     $the_object = new self;
-    // $the_object->id = $found_user['id'];
-    // $the_object->username = $found_user['username'];
-    // $the_object->first_name = $found_user['first_name'];
-    // $the_object->last_name = $found_user['last_name'];
     foreach($the_record as $the_attribute => $value)
     {
       if($the_object->has_the_attribute($the_attribute))
@@ -49,6 +66,7 @@ class User
 
     return $the_object;
   }
+
   //Checking if some object has the attribute
   private function has_the_attribute($the_attribute)
   {
