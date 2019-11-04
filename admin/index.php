@@ -29,25 +29,39 @@ if(!$session->is_signed_in())
                 </h1>
 
                 <?php
-                // $result_set = User::find_all_users();
-                // while($row = mysqli_fetch_array($result_set))
-                // {
-                //   echo $row['username'].'<br>';
-                // }
+                $user = new User();
+                $user->username = "SOME USERNAME";
+                $user->password = "123456789";
+                $user->first_name = "SOME FIRST NAME";
+                $user->last_name = "SOME LAST NAME";
 
-                // $found_user = User::find_user_by_id(1);
-                // $user = User::instantiation($found_user);
+                $user->create();
+
+                // $user = new User();
+                // $user->username = "SOME USERNAME";
+                // $user->password = "123456789";
+                // $user->first_name = "SOME FIRST NAME";
+                // $user->last_name = "SOME LAST NAME";
                 //
-                // echo $user->username;
+                // $user->save();
 
-                // $users = User::find_all_users();
-                // foreach($users as $user)
-                // {
-                //   echo $user->username."<br>";
-                // }
-                $found_user = User::find_user_by_id(1);
-                echo $found_user->username;
+                // $user = User::find_user_by_id(9);
+                // $user->first_name = 'Zoran';
+                // $user->last_name = 'Zoric';
+                // $user->update();
 
+                // $user = User::find_user_by_id(5);
+                // $user->delete();
+
+                // $user = User::find_user_by_id(6);
+                // $user->first_name = 'something';
+                // $user->last_name = 'last something';
+                // $user->password = '123456789';
+                // $user->save();
+
+                // $user = new User();
+                // $user->username = 'new new username';
+                // $user->save();
                 ?>
 
                 <ol class="breadcrumb">
