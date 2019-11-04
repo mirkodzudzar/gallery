@@ -29,13 +29,18 @@ if(!$session->is_signed_in())
                 </h1>
 
                 <?php
-                $user = new User();
-                $user->username = "SOME USERNAME";
-                $user->password = "123456789";
-                $user->first_name = "SOME FIRST NAME";
-                $user->last_name = "SOME LAST NAME";
-
-                $user->create();
+                // $users = User::find_all();
+                // foreach($users as $user)
+                // {
+                //   echo $user->username."<br>";
+                // }
+                // $user = new User();
+                // $user->username = "SOME USERNAME";
+                // $user->password = "123456789";
+                // $user->first_name = "SOME FIRST NAME";
+                // $user->last_name = "SOME LAST NAME";
+                //
+                // $user->create();
 
                 // $user = new User();
                 // $user->username = "SOME USERNAME";
@@ -62,6 +67,24 @@ if(!$session->is_signed_in())
                 // $user = new User();
                 // $user->username = 'new new username';
                 // $user->save();
+
+                // $photos = Photo::find_all();
+                // foreach($photos as $photo)
+                // {
+                //   echo $photo->title."<br>";
+                // }
+
+                // $photo = new Photo();
+                // $photo->title = "SOME TITLE";
+                // $photo->description = "SOME DESCRIPTION";
+                // $photo->filename = "SOME FILENAME";
+                // $photo->type = "SOME TYPE";
+                // $photo->size = 20;
+                //
+                // $photo->create();
+
+                echo INCLUDES_PATH;
+
                 ?>
 
                 <ol class="breadcrumb">
@@ -78,6 +101,7 @@ if(!$session->is_signed_in())
     </div>
     <!-- /.container-fluid -->
 </div>
+
 <!-- /#page-wrapper -->
 
 <?php include("includes/footer.php"); ?>
