@@ -50,15 +50,15 @@ if(!$session->is_signed_in())
                 //
                 // $user->save();
 
-                // $user = User::find_user_by_id(9);
+                // $user = User::find_by_id(9);
                 // $user->first_name = 'Zoran';
                 // $user->last_name = 'Zoric';
                 // $user->update();
 
-                // $user = User::find_user_by_id(5);
+                // $user = User::find_by_id(5);
                 // $user->delete();
 
-                // $user = User::find_user_by_id(6);
+                // $user = User::find_by_id(6);
                 // $user->first_name = 'something';
                 // $user->last_name = 'last something';
                 // $user->password = '123456789';
