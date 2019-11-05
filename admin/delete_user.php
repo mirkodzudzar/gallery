@@ -10,17 +10,17 @@ if(!$session->is_signed_in())
 <?php
   if(empty($_GET['id']))
   {
-    redirect('photos.php');
+    redirect('users.php');
   }
 
-  $photo = Photo::find_by_id($_GET['id']);
-  if($photo)
+  $user = User::find_by_id($_GET['id']);
+  if($user)
   {
-      $photo->delete_photo();
-      redirect('photos.php');
+      $user->delete();
+      redirect('users.php');
   }
   else
   {
-    redirect("photos.php");
+    redirect("users.php");
   }
 ?>

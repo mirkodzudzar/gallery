@@ -25,8 +25,6 @@ else
       $photo->description = $_POST['description'];
 
       $photo->save();
-
-      redirect('photos.php');
     }
   }
 }
@@ -54,22 +52,22 @@ else
                 </h1>
                 <form class="" action="" method="post"><!-- action="edit_photo.php" -->
                   <div class="col-md-8">
-                    <div class="form_group">
+                    <div class="form-group">
                       <label for="title">Title</label>
                       <input type="text" name="title" value="<?php echo $photo->title; ?>" class="form-control">
                     </div>
-                    <div class="form_group">
+                    <div class="form-group">
                       <a href="#" class="thumbnail"><img src="<?php echo $photo->picture_path(); ?>" alt=""></a>
                     </div>
-                    <div class="form_group">
+                    <div class="form-group">
                       <label for="caption">Caption</label>
                       <input type="text" name="caption" value="<?php echo $photo->caption; ?>" class="form-control">
                     </div>
-                    <div class="form_group">
+                    <div class="form-group">
                       <label for="alternate_text">Alternate text</label>
                       <input type="text" name="alternate_text" value="<?php echo $photo->alternate_text; ?>" class="form-control">
                     </div>
-                    <div class="form_group">
+                    <div class="form-group">
                       <label for="description">Description</label>
                       <textarea name="description" rows="8" cols="80" class="form-control"><?php echo $photo->description; ?></textarea>
                     </div>
