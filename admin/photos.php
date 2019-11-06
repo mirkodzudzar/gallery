@@ -28,8 +28,8 @@ $photos = Photo::find_all();
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Photos
-                    <small>Subheading</small>
+                    Admin
+                    <small>Photos</small>
                 </h1>
                 <div class="col-md-12">
                   <table class="table table-hover">

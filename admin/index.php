@@ -25,76 +25,11 @@ if(!$session->is_signed_in())
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Admin
-                    <small>Subheading</small>
+                    <small>Dashboard</small>
                 </h1>
 
-                <?php
-                // $users = User::find_all();
-                // foreach($users as $user)
-                // {
-                //   echo $user->username."<br>";
-                // }
-                // $user = new User();
-                // $user->username = "SOME USERNAME";
-                // $user->password = "123456789";
-                // $user->first_name = "SOME FIRST NAME";
-                // $user->last_name = "SOME LAST NAME";
-                //
-                // $user->create();
+                <?php include('includes/admin_content.php') ?>
 
-                // $user = new User();
-                // $user->username = "SOME USERNAME";
-                // $user->password = "123456789";
-                // $user->first_name = "SOME FIRST NAME";
-                // $user->last_name = "SOME LAST NAME";
-                //
-                // $user->save();
-
-                // $user = User::find_by_id(9);
-                // $user->first_name = 'Zoran';
-                // $user->last_name = 'Zoric';
-                // $user->update();
-
-                // $user = User::find_by_id(5);
-                // $user->delete();
-
-                // $user = User::find_by_id(6);
-                // $user->first_name = 'something';
-                // $user->last_name = 'last something';
-                // $user->password = '123456789';
-                // $user->save();
-
-                // $user = new User();
-                // $user->username = 'new new username';
-                // $user->save();
-
-                // $photos = Photo::find_all();
-                // foreach($photos as $photo)
-                // {
-                //   echo $photo->title."<br>";
-                // }
-
-                // $photo = new Photo();
-                // $photo->title = "SOME TITLE";
-                // $photo->description = "SOME DESCRIPTION";
-                // $photo->filename = "SOME FILENAME";
-                // $photo->type = "SOME TYPE";
-                // $photo->size = 20;
-                //
-                // $photo->create();
-
-                echo INCLUDES_PATH;
-
-                ?>
-
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
             </div>
         </div>
         <!-- /.row -->

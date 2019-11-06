@@ -50,8 +50,8 @@ if(isset($_POST['create']))
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Create User
-                    <small>Subheading</small>
+                    Admin
+                    <small>Create user</small>
                 </h1>
                 <form class="" action="" method="post" enctype="multipart/form-data"><!-- action="add_user.php" -->
                   <h4 class="bg-danger"><?php echo $the_message; ?></h4>

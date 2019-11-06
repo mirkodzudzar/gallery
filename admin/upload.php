@@ -45,8 +45,8 @@ if(isset($_POST['submit']))
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Upload
-                    <small>Subheading</small>
+                    Admin
+                    <small>Upload</small>
                 </h1>
                 <div class="col-md-6">
                   <h4 class="bg-danger"><?php echo $the_message; ?></h4>
