@@ -52,7 +52,7 @@ if(isset($_POST['submit']))
                   <h4 class="bg-danger"><?php echo $the_message; ?></h4>
                   <form class="" action="upload.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                      <input type="text" name="title" value="" class="form-control">
+                      <input type="text" name="title" value="" placeholder="Title" class="form-control">
                     </div>
                     <div class="form-group">
                       <input type="file" name="file_upload" value="">
