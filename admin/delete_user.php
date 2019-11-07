@@ -16,7 +16,8 @@ if(!$session->is_signed_in())
   $user = User::find_by_id($_GET['id']);
   if($user)
   {
-      $user->delete();
+      $user->delete_photo();
+      $session->message("The user {$user->username} has been deleted");
       redirect('users.php');
   }
   else

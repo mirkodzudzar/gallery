@@ -3,6 +3,7 @@ class Session
 {
   private $signed_in = false;
   public $user_id;
+  public $user_username;
   public $message;
   public $count;
 
@@ -27,7 +28,7 @@ class Session
     }
   }
 
-  //Method for showing messages
+  //Method for showing messages - get/set
   public function message($msg="")
   {
     if(!empty($msg))
@@ -40,7 +41,7 @@ class Session
     }
   }
 
-  //Method for unseting message
+  //Method that checks if there is some message
   private function check_message()
   {
     if(isset($_SESSION['message']))
@@ -65,6 +66,7 @@ class Session
     if($user)
     {
       $this->user_id = $_SESSION['user_id'] = $user->id;
+      $this->user_username = $_SESSION['user_username'] = $user->username;
       $this->signed_in = true;
     }
   }
@@ -72,7 +74,9 @@ class Session
   public function logout()
   {
     unset($_SESSION['user_id']);
+    unset($_SESSION['user_username']);
     unset($this->user_id);
+    unset($this->user_username);
     $this->signed_in = false;
   }
 
@@ -92,4 +96,5 @@ class Session
 }
 
 $session = new Session();
+$message = $session->message();
 ?>

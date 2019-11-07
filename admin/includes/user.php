@@ -90,5 +90,43 @@ class User extends Db_object
 
     return !empty($the_result_array) ? array_shift($the_result_array) : false;
   }
+
+  //Saving user image using ajax
+  public function ajax_save_user_image($user_image, $user_id)
+  {
+    global $database;
+
+    $user_image = $database->escape_string($user_image);
+    $user_id = $database->escape_string($user_id);
+
+    $this->user_image = $user_image;
+    $this->id = $user_id;
+
+    $sql = "UPDATE ".self::$db_table." SET user_image = '{$this->user_image}'";
+    $sql .= " WHERE id = {$this->id}";
+    $update_image = $database->query($sql);
+
+    echo $this->image_path_and_placeholder();
+  }
+
+  //Deleting and unlinking photo
+  public function delete_photo()
+  {
+    if($this->delete())
+    {
+      $target_path = SITE_ROOT.DS.'admin'.DS.$this->upload_directory.DS.$this->user_image;
+
+      return unlink($target_path) ? true : false;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  public function photos()
+  {
+    return Photo::find_by_query("SELECT * FROM photos WHERE user_id = ".$this->id);
+  }
 } //End of user class
 ?>

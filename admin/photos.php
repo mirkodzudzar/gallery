@@ -8,7 +8,7 @@ if(!$session->is_signed_in())
 ?>
 
 <?php
-$photos = Photo::find_all();
+$photos = Photo::find_all();;
 ?>
 
 <!-- Navigation -->
@@ -31,6 +31,8 @@ $photos = Photo::find_all();
                     Admin
                     <small>Photos</small>
                 </h1>
+                <a href="user_photos.php" class="btn btn-primary">See your photos</a>
+                <p class="bg-success"><?php echo $message; ?></p>
                 <div class="col-md-12">
                   <table class="table table-hover">
                     <thead>
@@ -51,7 +53,7 @@ $photos = Photo::find_all();
                         <div class="action_links">
                           <a href="../photo.php?id=<?php echo $photo->id; ?>">View</a>
                           <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
-                          <a href="delete_photo.php?id=<?php echo $photo->id ?>">Delete</a>
+                          <a href="delete_photo.php?id=<?php echo $photo->id ?>" class="delete_link">Delete</a>
                         </div>
                       </td>
                       <td><?php echo $photo->id; ?></td>

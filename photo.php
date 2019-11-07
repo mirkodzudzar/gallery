@@ -18,11 +18,12 @@ if(isset($_POST['submit']))
 
   if($new_comment && $new_comment->save())
   {
+    $session->message("Your comment has been submited");
     redirect("photo.php?id={$photo->id}");
   }
   else
   {
-    $the_message = "There was some problems saving";
+    $session->message("There was some problems saving");
   }
 }
 else
@@ -43,6 +44,7 @@ $comments = Comment::find_the_comments($photo->id);
     <div class="col-lg-12">
         <!-- Blog Posts -->
         <!-- Title -->
+        <p class="bg-success"><?php echo $message; ?></p>
         <h1><?php echo $photo->title; ?></h1>
         <!-- Author -->
         <!-- <p class="lead">

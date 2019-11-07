@@ -17,6 +17,7 @@ if(!$session->is_signed_in())
   if($comment)
   {
       $comment->delete();
+      $session->message("The comment has been deleted");
       redirect('comments.php');
   }
   else

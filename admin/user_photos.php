@@ -8,7 +8,7 @@ if(!$session->is_signed_in())
 ?>
 
 <?php
-$comments = Comment::find_all();
+$photos = User::find_by_id($_SESSION['user_id'])->photos();
 ?>
 
 <!-- Navigation -->
@@ -29,31 +29,44 @@ $comments = Comment::find_all();
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Admin
-                    <small>All Comments</small>
+                    <small>Photos</small>
                 </h1>
                 <p class="bg-success"><?php echo $message; ?></p>
                 <div class="col-md-12">
                   <table class="table table-hover">
                     <thead>
                       <tr>
+                        <th>Photo</th>
                         <th>Id</th>
-                        <th>Author</th>
-                        <th>Body</th>
-                        <th>Date</th>
+                        <th>File Name</th>
+                        <th>Title</th>
+                        <th>Size</th>
+                        <th>Comments</th>
                       </tr>
                     </thead>
                     <tbody>
 
-                    <?php foreach($comments as $comment) : ?>
+                    <?php foreach($photos as $photo) : ?>
                     <tr>
-                      <td><?php echo $comment->id; ?></td>
-                      <td><?php echo $comment->author; ?>
+                      <td><img src='<?php echo $photo->picture_path(); ?>' alt='' class="admin-photo-thumbnail">
                         <div class="action_links">
-                          <a href="delete_comment.php?id=<?php echo $comment->id ?>" class="delete_link">Delete</a>
+                          <a href="../photo.php?id=<?php echo $photo->id; ?>">View</a>
+                          <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
+                          <a href="delete_photo.php?id=<?php echo $photo->id ?>" class="delete_link">Delete</a>
                         </div>
                       </td>
-                      <td><?php echo $comment->body; ?></td>
-                      <td><?php echo $comment->date; ?></td>
+                      <td><?php echo $photo->id; ?></td>
+                      <td><?php echo $photo->filename; ?></td>
+                      <td><?php echo $photo->title; ?></td>
+                      <td><?php echo $photo->size; ?></td>
+                      <td>
+                        <a href="photo_comments.php?id=<?php echo $photo->id ?>">
+                          <?php
+                          $comments = Comment::find_the_comments($photo->id);
+                          echo count($comments);
+                          ?>
+                        </a>
+                      </td>
                     </tr>
                     <?php endforeach; ?>
 

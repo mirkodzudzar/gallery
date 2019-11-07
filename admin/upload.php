@@ -8,21 +8,20 @@ if(!$session->is_signed_in())
 ?>
 
 <?php
-
-$the_message = "";
-
-if(isset($_POST['submit']))
+if(isset($_FILES['file']))
 {
   $photo = new Photo();
+  $photo->user_id = $_SESSION['user_id'];
   $photo->title = $_POST['title'];
-  $photo->set_file($_FILES['file_upload']);
+  $photo->set_file($_FILES['file']);
   if($photo->save())
   {
-    $the_message = "Photo uploaded successfully";
+    $session->message("The photo {$photo->title} uploaded successfully");
+    redirect('photos.php');
   }
   else
   {
-    $the_message = join("<br>", $photo->errors);
+    $session->message(join("<br>", $photo->errors));
   }
 
 }
@@ -48,19 +47,28 @@ if(isset($_POST['submit']))
                     Admin
                     <small>Upload</small>
                 </h1>
-                <div class="col-md-6">
-                  <h4 class="bg-danger"><?php echo $the_message; ?></h4>
-                  <form class="" action="upload.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                      <input type="text" name="title" value="" placeholder="Title" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <input type="file" name="file_upload" value="">
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" name="submit" value="Submit">
-                    </div>
-                  </form>
+                <p class="bg-success"><?php echo $message; ?></p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <form class="" action="upload.php" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <input type="text" name="title" value="" placeholder="Title" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="file" name="file" value="">
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" name="submit" value="Submit">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <form class="dropzone" action="upload.php" method="post">
+
+                    </form>
+                  </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,7 @@
 <?php include("includes/header.php"); ?>
 
+<?php include("includes/photo_library_modal.php") ?>
+
 <?php
 if(!$session->is_signed_in())
 {
@@ -26,14 +28,17 @@ if(isset($_POST['update']))
     if(empty($_FILES['user_image']))
     {
       $user->save();
+      $session->message("The user {$user->username} has been updated");
+      redirect("users.php");
     }
     else
     {
       $user->set_file($_FILES['user_image']);
       $user->upload_photo();
       $user->save();
-
-      redirect("edit_user.php?id={$user->id}");
+      $session->message("The user {$user->username} has been updated");
+      // redirect("edit_user.php?id={$user->id}");
+      redirect("users.php");
     }
   }
 }
@@ -59,8 +64,9 @@ if(isset($_POST['update']))
                     Update User
                     <small>Subheading</small>
                 </h1>
-                <div class="col-md-6">
-                  <img src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""  class="img-responsive thumbnail">
+                <p class="bg-success"><?php echo $message; ?></p>
+                <div class="col-md-6 user_image_box">
+                  <a href="#" data-toggle="modal" data-target="#photo-library"><img src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""  class="img-responsive thumbnail"></a>
                 </div>
                 <form class="" action="" method="post" enctype="multipart/form-data"><!-- action="add_user.php" -->
                   <div class="col-md-6">
@@ -84,7 +90,7 @@ if(isset($_POST['update']))
                       <input type="password" name="password" value="<?php echo $user->password; ?>" class="form-control">
                     </div>
                     <div class="form-group">
-                      <a href="delete_user.php?id=<?php echo $user->id ?>" class="btn btn-danger">Delete</a>
+                      <a href="delete_user.php?id=<?php echo $user->id ?>" class="btn btn-danger delete_link" id="user-id">Delete</a>
                       <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
                     </div>
                   </div>

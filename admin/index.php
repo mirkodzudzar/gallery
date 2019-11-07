@@ -27,6 +27,7 @@ if(!$session->is_signed_in())
                     Admin
                     <small>Dashboard</small>
                 </h1>
+                <p class="bg-success"><?php echo $message; ?></p>
 
                 <?php include('includes/admin_content.php') ?>
 

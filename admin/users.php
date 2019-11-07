@@ -31,6 +31,7 @@ $users = User::find_all();
                     Admin
                     <small>Users</small>
                 </h1>
+                <p class="bg-success"><?php echo $message; ?></p>
                 <a href="add_user.php" class="btn btn-primary">Add User</a>
                 <div class="col-md-12">
                   <table class="table table-hover">
@@ -51,9 +52,8 @@ $users = User::find_all();
                       <td><img src='<?php echo $user->image_path_and_placeholder(); ?>' alt='' class="admin-user-thumbnail user_image"></td>
                       <td><?php echo $user->username; ?>
                         <div class="action_links">
-                          <a href="#">View</a>
                           <a href="edit_user.php?id=<?php echo $user->id; ?>">Edit</a>
-                          <a href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
+                          <a href="delete_user.php?id=<?php echo $user->id ?>" class="delete_link">Delete</a>
                         </div>
                       </td>
                       <td><?php echo $user->first_name; ?></td>

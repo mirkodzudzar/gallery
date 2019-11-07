@@ -24,6 +24,7 @@ else
       $photo->alternate_text = $_POST['alternate_text'];
       $photo->description = $_POST['description'];
 
+      $session->message("The photo {$photo->title} has been updated");
       $photo->save();
     }
   }
@@ -50,6 +51,7 @@ else
                     Photos
                     <small>Subheading</small>
                 </h1>
+                <p class="bg-success"><?php echo $message; ?></p>
                 <form class="" action="" method="post"><!-- action="edit_photo.php" -->
                   <div class="col-md-8">
                     <div class="form-group">
@@ -99,7 +101,7 @@ else
                         </div>
                         <div class="info-box-footer clearfix">
                           <div class="info-box-delete pull-left">
-                              <a  href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger btn-lg ">Delete</a>
+                              <a  href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger btn-lg delete_link">Delete</a>
                           </div>
                           <div class="info-box-update pull-right ">
                               <input type="submit" name="update" value="Update" class="btn btn-primary btn-lg ">

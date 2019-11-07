@@ -8,7 +8,6 @@ if(!$session->is_signed_in())
 ?>
 
 <?php
-$the_message = "";
 $user = new User();
 if(isset($_POST['create']))
 {
@@ -21,13 +20,14 @@ if(isset($_POST['create']))
 
     $user->set_file($_FILES['user_image']);
 
-    if($user->upload_photo())
+    if($user->upload_photo() || $user->save())
     {
-      $the_message = "User has been created";
+      $session->message("User {$user->username} has been created");
+      redirect("users.php");
     }
     else
     {
-      $the_message = join("<br>", $user->errors);
+      $session->message(join("<br>", $user->errors));
     }
   }
 }
@@ -53,8 +53,8 @@ if(isset($_POST['create']))
                     Admin
                     <small>Create user</small>
                 </h1>
+                <p class="bg-success"><?php echo $message; ?></p>
                 <form class="" action="" method="post" enctype="multipart/form-data"><!-- action="add_user.php" -->
-                  <h4 class="bg-danger"><?php echo $the_message; ?></h4>
                   <div class="col-md-6 col-md-offset-3">
                     <div class="form_group">
                       <input type="file" name="user_image">
